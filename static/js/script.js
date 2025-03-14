@@ -22,7 +22,11 @@ btnSud.addEventListener("click", sud);
 
 
 function nord(){
-//    btnNord.style.top = btnNord.style.top + 50 ;
+ /* guardiaTop = guardia.style.top;  
+  guardiaTop = Number(guardiaTop.substring(0, guardiaTop.length - 2)) -20;
+  guardia.style.top = guardiaTop + "px";   */
+
+  
 }
 
 function ovest(){
