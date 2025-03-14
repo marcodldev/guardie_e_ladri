@@ -122,10 +122,5 @@ function ladroMuove() {
                 ladro.style.left = ladroLeft + "px";
             }
             break;
-
-
     }
-
-
-
 }

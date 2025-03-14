@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="static/css/style.css">
@@ -8,13 +9,21 @@
 </head>
 
 <body>
+	
+	<img src="sfondo.jpg" class="sfondo" alt="">
+		
 	<div id="container">
+		
+		
 		<div id="stanza">
-			<div id="guardia">G</div>
-			<div id="ladro" >L</div>
+			<h1 class="acchiappa">Acchiappa Joker!!</h1>
+			<img src="static/images/batman.jpeg" alt="batman" class="personaggio" id="guardia" /> 
+			<img src="static/images/joker.jpeg" alt="joker" class="personaggio" id="ladro"/>
 		</div>
+		
 		<div id="inputoutput">
 			<div id="pulsanti">
+				<p class="spiegazione">Innanzitutto, devi usare i tasti "WASD" o i pulsanti qua sotto per spostarti. <br /> Poi, ricorda che hai 20 mosse!! ti tengo d'occhio...</p>
 				<button class="pulsante" id="nord">NORD</button><br />
 				<button class="pulsante" id="ovest">OVEST</button>
 				<button class="pulsante" id="est">EST</button><br />
@@ -23,6 +32,8 @@
 			<div id="esito"></div>
 		</div>
 	</div>
+
 	<script src="static/js/script.js"></script>
 </body>
+
 </html>

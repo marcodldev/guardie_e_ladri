@@ -1,6 +1,32 @@
 body {
-	font-family: Arial;
 	font-size: 24px;
+	background-color: rgb(53, 39, 39);
+}
+
+.sfondo {
+	position: absolute;
+	top: -200px;
+	left: 0px;
+	width: 100%;
+	opacity: 0.7;
+}
+
+img {
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.acchiappa {
+	text-align: center;
+	position: relative;
+	top: -150px;
+	background-color: #232323;
+	color: antiquewhite;
+	height: 60px;
+	border: 2px solid #4d4d4d;
+	border-radius: 30px;
+	box-shadow: -0.1em -0.2em 0.3em rgb(75, 0, 0),
+		inset 0 0 0.8em black;
 }
 
 #container {
@@ -13,70 +39,102 @@ body {
 }
 
 #stanza {
+	margin-top: 100px;
 	position: relative;
 	width: 502px;
 	height: 502px;
 	float: left;
-	background-color: #111;
-	border: 2px solid red;
+	background-color: #232323;
+	box-shadow: 0.3em 0.3em 0.7em rgb(185, 0, 0),
+		-0.5em -0.5em 0.7em olive,
+		inset 0 0 1.2em #8b8b8b;
+	border: 2px solid rgb(145, 0, 0);
+	border-radius: 15px;
+
+}
+
+.spiegazione {
+	color: antiquewhite;
+	font-size: 22px;
 }
 
 #guardia,
 #ladro {
 	width: 46px;
-	height: 35px;
+	height: 46px;
 	text-align: center;
-	border: 2px solid white;
 	position: absolute;
-	padding-top: 11px;
+	border-radius: 12px;
+
 }
 
 #guardia {
-	background-color: #0ff;
-	color: #ff0;
+	box-shadow: 0 0 0.3em rgb(255, 0, 0);
 	z-index: 5;
 	top: 200px;
 	left: 50px;
+	border: 2px solid rgb(145, 0, 0);
 }
 
 #ladro {
-	background-color: #c00;
-	color: #ff0;
 	top: 250px;
 	left: 400px;
+	box-shadow: 0 0 0.3em olive;
+	border: 2px solid olive;
 }
 
 #inputoutput {
 	position: relative;
 	margin-top: 100px;
 	float: right;
-	width: 300px;
-	height: 300px;
+	width: 340px;
+	height: 320px;
+	background-color: #626262;
+	padding-bottom: 20px;
+	border: 2px solid rgb(145, 0, 0);
+	border-radius: 20px;
+	box-shadow: 0.5em -0.5em 0.7em olive,
+		-0.3em 0.3em 0.7em rgb(185, 0, 0),
+		inset 2em 9.5em 3em rgba(0, 0, 0, 0.625);
 }
 
 #pulsanti {
-	width: 300px;
-	height: 120px;
-	border: 0px;
 	text-align: center;
 	line-height: 1.5;
 }
 
+.pulsante:hover {
+	color: #232323;
+	background-color: rgb(255, 255, 241);
+	box-shadow: 0 0 5px rgb(196, 196, 196);
+	border-radius: 40px;
+	border: 2px solid #4b4b4b;
+}
+
 .pulsante {
-	font-family: Arial;
-	font-size: 20px;
+	font-size: 15px;
 	width: 90px;
 	height: 26px;
-	background-color: #0ff;
-	color: #ff0;
-	border: 2px solid #111;
+	background-color: #232323;
+	color: rgb(255, 255, 241);
+	border: 2px solid #4b4b4b;
+	border-radius: 50%;
+	box-shadow: 0 0 5px rgb(89, 89, 89);
+}
+
+#ovest {
+	margin-right: 10px;
+}
+
+#est {
+	margin-left: 10px;
 }
 
 #esito {
 	width: 300px;
 	height: 100px;
 	border: 0px;
-	font-family: Arial;
+
 	text-align: center;
 	font-weight: bold;
 	font-size: 32px;
