@@ -15,13 +15,44 @@ let btnNord = document.getElementById("nord");
 let btnOvest = document.getElementById("ovest");
 let btnEst = document.getElementById("est");
 let btnSud = document.getElementById("sud");
+let btnReset = document.getElementById("reset");
+let contatoreMosse = document.getElementById("contatoreMosse");
 
-
+let contatore = 0;
+let gameover = false;
 
 btnNord.addEventListener("click", nord);
 btnOvest.addEventListener("click", ovest);
 btnEst.addEventListener("click", est);
 btnSud.addEventListener("click", sud);
+
+document.addEventListener("keydown", direzioneTasti);
+
+function direzioneTasti(evento) {
+    let tasto = evento.keyCode;
+
+    if (gameover == false) {
+        switch (tasto) {
+            case 87:
+                nord();
+                break;
+            case 83:
+                sud();
+                break;
+            case 68:
+                est();
+                break;
+            case 65:
+                ovest();
+                break;
+        }
+    }
+
+}
+
+
+
+btnReset.addEventListener("click", gameReset)
 
 
 function nord() {
@@ -31,9 +62,14 @@ function nord() {
 
     if (guardiaTop >= 0) {
         guardia.style.top = guardiaTop + "px";
-    }
 
+        contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
+    }
     ladroMuove();
+
+    controlloEsito();
 }
 
 
@@ -45,9 +81,14 @@ function ovest() {
 
     if (guardiaLeft >= 0) {
         guardia.style.left = guardiaLeft + "px";
-    }
 
+        contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
+    }
     ladroMuove();
+
+    controlloEsito();
 }
 
 function est() {
@@ -59,9 +100,13 @@ function est() {
     if (guardiaLeft <= currentW - 30) {
         guardia.style.left = guardiaLeft + "px";
 
+        contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
 
     ladroMuove();
+    controlloEsito();
 }
 
 function sud() {
@@ -71,10 +116,15 @@ function sud() {
 
     if (guardiaTop <= currentH - 30) {
         guardia.style.top = guardiaTop + "px";
+
+        contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
 
-
     ladroMuove();
+
+    controlloEsito();
 }
 
 
@@ -87,12 +137,14 @@ function ladroMuove() {
 
     switch (numeroRandom) {
         case 0:
-             current = getComputedStyle(ladro).top;
-             ladroTop = Number(current.substring(0, current.length - 2)) + 50;
+            current = getComputedStyle(ladro).top;
+            ladroTop = Number(current.substring(0, current.length - 2)) + 50;
 
 
             if (ladroTop <= currentH - 30) {
                 ladro.style.top = ladroTop + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 1:
@@ -102,6 +154,8 @@ function ladroMuove() {
 
             if (ladroTop >= 0) {
                 ladro.style.top = ladroTop + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 2:
@@ -111,6 +165,8 @@ function ladroMuove() {
 
             if (ladroLeft <= currentW - 30) {
                 ladro.style.left = ladroLeft + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 3:
@@ -120,6 +176,8 @@ function ladroMuove() {
 
             if (ladroLeft >= 0) {
                 ladro.style.left = ladroLeft + "px";
+            } else {
+                ladroMuove();
             }
             break;
     }
