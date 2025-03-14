@@ -16,6 +16,7 @@ let btnOvest = document.getElementById("ovest");
 let btnEst = document.getElementById("est");
 let btnSud = document.getElementById("sud");
 let btnReset = document.getElementById("reset");
+let contatoreMosse = document.getElementById("contatoreMosse");
 
 let contatore = 0;
 let gameover = false;
@@ -63,6 +64,8 @@ function nord() {
         guardia.style.top = guardiaTop + "px";
 
         contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
     ladroMuove();
 
@@ -80,6 +83,8 @@ function ovest() {
         guardia.style.left = guardiaLeft + "px";
 
         contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
     ladroMuove();
 
@@ -96,6 +101,8 @@ function est() {
         guardia.style.left = guardiaLeft + "px";
 
         contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
 
     ladroMuove();
@@ -111,6 +118,8 @@ function sud() {
         guardia.style.top = guardiaTop + "px";
 
         contatore += 1;
+        contatoreMosse.hidden = false;
+        contatoreMosse.innerText = "Mosse effettuate: " + contatore;
     }
 
     ladroMuove();
@@ -222,6 +231,7 @@ function controlloEsito() {
 function gameReset() {
     btnReset.hidden = true;
     gameover = false;
+    contatoreMosse.hidden = true;
 
     contatore = 0;
 
