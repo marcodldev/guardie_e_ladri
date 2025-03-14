@@ -22,22 +22,56 @@ btnSud.addEventListener("click", sud);
 
 
 function nord(){
- /* guardiaTop = guardia.style.top;  
-  guardiaTop = Number(guardiaTop.substring(0, guardiaTop.length - 2)) -20;
-  guardia.style.top = guardiaTop + "px";   */
 
-  
+    
+  let current = getComputedStyle(guardia).top;
+  guardiaTop = Number(current.substring(0, current.length-2)) - 50;
+
+
+  if(guardia.style.top == "0px"){
+    guardia.style.top =  "0px";
+  } else {
+    guardia.style.top = guardiaTop + "px";
+  }
 }
 
+
+
 function ovest(){
-   
+
+    let current = getComputedStyle(guardia).left;
+    guardiaLeft = Number(current.substring(0, current.length-2)) - 50;
+  
+  
+    if(guardia.style.left == "0px"){
+      guardia.style.left =  "0px";
+    } else {
+      guardia.style.left = guardiaLeft + "px";
+    }
 }
 
 function est(){
-   
+
+  let current = getComputedStyle(guardia).left;
+  guardiaLeft = Number(current.substring(0, current.length-2)) + 50;
+
+
+  if(guardia.style.left == "450px"){
+    guardia.style.left =  "450px";
+  } else {
+    guardia.style.left = guardiaLeft + "px";
+  }
 }
 
 function sud(){
-   
+    let current = getComputedStyle(guardia).top;
+    guardiaTop = Number(current.substring(0, current.length-2)) + 50;
+  
+  
+    if(guardia.style.top == "450px"){
+      guardia.style.top =  "450px";
+    } else {
+      guardia.style.top = guardiaTop + "px";
+    }
 }
 
