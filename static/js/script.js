@@ -15,13 +15,43 @@ let btnNord = document.getElementById("nord");
 let btnOvest = document.getElementById("ovest");
 let btnEst = document.getElementById("est");
 let btnSud = document.getElementById("sud");
+let btnReset = document.getElementById("reset");
 
 let contatore = 0;
+let gameover = false;
 
 btnNord.addEventListener("click", nord);
 btnOvest.addEventListener("click", ovest);
 btnEst.addEventListener("click", est);
 btnSud.addEventListener("click", sud);
+
+document.addEventListener("keydown", direzioneTasti);
+
+function direzioneTasti(evento) {
+    let tasto = evento.keyCode;
+
+    if (gameover == false) {
+        switch (tasto) {
+            case 87:
+                nord();
+                break;
+            case 83:
+                sud();
+                break;
+            case 68:
+                est();
+                break;
+            case 65:
+                ovest();
+                break;
+        }
+    }
+
+}
+
+
+
+btnReset.addEventListener("click", gameReset)
 
 
 function nord() {
@@ -31,10 +61,10 @@ function nord() {
 
     if (guardiaTop >= 0) {
         guardia.style.top = guardiaTop + "px";
-        ladroMuove();
+
         contatore += 1;
     }
-
+    ladroMuove();
 
     controlloEsito();
 }
@@ -48,10 +78,10 @@ function ovest() {
 
     if (guardiaLeft >= 0) {
         guardia.style.left = guardiaLeft + "px";
-        ladroMuove();
+
         contatore += 1;
     }
-
+    ladroMuove();
 
     controlloEsito();
 }
@@ -64,11 +94,11 @@ function est() {
 
     if (guardiaLeft <= currentW - 30) {
         guardia.style.left = guardiaLeft + "px";
-        ladroMuove();
+
         contatore += 1;
     }
 
-
+    ladroMuove();
     controlloEsito();
 }
 
@@ -79,11 +109,11 @@ function sud() {
 
     if (guardiaTop <= currentH - 30) {
         guardia.style.top = guardiaTop + "px";
-        ladroMuove();
+
         contatore += 1;
     }
 
-
+    ladroMuove();
 
     controlloEsito();
 }
@@ -104,6 +134,8 @@ function ladroMuove() {
 
             if (ladroTop <= currentH - 30) {
                 ladro.style.top = ladroTop + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 1:
@@ -113,6 +145,8 @@ function ladroMuove() {
 
             if (ladroTop >= 0) {
                 ladro.style.top = ladroTop + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 2:
@@ -122,6 +156,8 @@ function ladroMuove() {
 
             if (ladroLeft <= currentW - 30) {
                 ladro.style.left = ladroLeft + "px";
+            } else {
+                ladroMuove();
             }
             break;
         case 3:
@@ -131,6 +167,8 @@ function ladroMuove() {
 
             if (ladroLeft >= 0) {
                 ladro.style.left = ladroLeft + "px";
+            } else {
+                ladroMuove();
             }
             break;
 
@@ -152,23 +190,51 @@ function controlloEsito() {
 
     if (contatore != 20) {
         if (ladroTop == guardiaTop && ladroLeft == guardiaLeft) {
+            gameover = true;
             console.log("beccato");
             btnNord.disabled = true;
             btnSud.disabled = true;
             btnEst.disabled = true;
             btnOvest.disabled = true;
             esito.innerHTML = "Catturato";
+            btnReset.hidden = false;
+
         }
 
     } else {
+        gameover = true;
         console.log("Il ladro è scappato");
         btnNord.disabled = true;
         btnSud.disabled = true;
         btnEst.disabled = true;
         btnOvest.disabled = true;
         esito.innerHTML = "Il ladro è scappato";
+        btnReset.hidden = false;
+
     }
 
     console.log(contatore)
+
+
 }
 
+
+function gameReset() {
+    btnReset.hidden = true;
+    gameover = false;
+
+    contatore = 0;
+
+    ladro.style.left = "400px";
+    ladro.style.top = "250px";
+
+    guardia.style.left = "50px";
+    guardia.style.top = "200px";
+
+    btnNord.disabled = false;
+    btnSud.disabled = false;
+    btnEst.disabled = false;
+    btnOvest.disabled = false;
+
+    esito.innerHTML = "";
+}
