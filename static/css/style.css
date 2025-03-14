@@ -1,4 +1,3 @@
-
 body {
 	font-family: Arial;
 	font-size: 24px;
@@ -22,7 +21,8 @@ body {
 	border: 2px solid red;
 }
 
-#guardia, #ladro {
+#guardia,
+#ladro {
 	width: 46px;
 	height: 35px;
 	text-align: center;
@@ -32,14 +32,18 @@ body {
 }
 
 #guardia {
-	background-color: #0ff;			
+	background-color: #0ff;
 	color: #ff0;
 	z-index: 5;
+	top: 200px;
+	left: 50px;
 }
 
 #ladro {
 	background-color: #c00;
 	color: #ff0;
+	top: 250px;
+	left: 400px;
 }
 
 #inputoutput {
