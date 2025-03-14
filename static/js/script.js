@@ -150,18 +150,25 @@ function controlloEsito() {
     let ladroTop = Number(currentLadroTop.substring(0, currentLadroTop.length - 2));
     let ladroLeft = Number(currentLadroLeft.substring(0, currentLadroLeft.length - 2));
 
+    if (contatore != 20) {
+        if (ladroTop == guardiaTop && ladroLeft == guardiaLeft) {
+            console.log("beccato");
+            btnNord.disabled = true;
+            btnSud.disabled = true;
+            btnEst.disabled = true;
+            btnOvest.disabled = true;
+            esito.innerHTML = "Catturato";
+        }
 
-    if (ladroTop == guardiaTop && ladroLeft == guardiaLeft) {
-        console.log("beccato");
+    } else {
+        console.log("Il ladro è scappato");
         btnNord.disabled = true;
         btnSud.disabled = true;
         btnEst.disabled = true;
         btnOvest.disabled = true;
-        esito.innerHTML = "Catturato";
-    } else {
-
+        esito.innerHTML = "Il ladro è scappato";
     }
-    
+
     console.log(contatore)
 }
 
