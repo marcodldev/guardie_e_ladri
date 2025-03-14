@@ -16,7 +16,7 @@ let btnOvest = document.getElementById("ovest");
 let btnEst = document.getElementById("est");
 let btnSud = document.getElementById("sud");
 
-
+let contatore = 0;
 
 btnNord.addEventListener("click", nord);
 btnOvest.addEventListener("click", ovest);
@@ -31,9 +31,12 @@ function nord() {
 
     if (guardiaTop >= 0) {
         guardia.style.top = guardiaTop + "px";
+        ladroMuove();
+        contatore += 1;
     }
 
-    ladroMuove();
+
+    controlloEsito();
 }
 
 
@@ -45,9 +48,12 @@ function ovest() {
 
     if (guardiaLeft >= 0) {
         guardia.style.left = guardiaLeft + "px";
+        ladroMuove();
+        contatore += 1;
     }
 
-    ladroMuove();
+
+    controlloEsito();
 }
 
 function est() {
@@ -58,10 +64,12 @@ function est() {
 
     if (guardiaLeft <= currentW - 30) {
         guardia.style.left = guardiaLeft + "px";
-
+        ladroMuove();
+        contatore += 1;
     }
 
-    ladroMuove();
+
+    controlloEsito();
 }
 
 function sud() {
@@ -71,10 +79,13 @@ function sud() {
 
     if (guardiaTop <= currentH - 30) {
         guardia.style.top = guardiaTop + "px";
+        ladroMuove();
+        contatore += 1;
     }
 
 
-    ladroMuove();
+
+    controlloEsito();
 }
 
 
@@ -87,8 +98,8 @@ function ladroMuove() {
 
     switch (numeroRandom) {
         case 0:
-             current = getComputedStyle(ladro).top;
-             ladroTop = Number(current.substring(0, current.length - 2)) + 50;
+            current = getComputedStyle(ladro).top;
+            ladroTop = Number(current.substring(0, current.length - 2)) + 50;
 
 
             if (ladroTop <= currentH - 30) {
@@ -125,7 +136,32 @@ function ladroMuove() {
 
 
     }
-
-
-
 }
+
+function controlloEsito() {
+
+    let currentGuardiaTop = getComputedStyle(guardia).top;
+    let currentGuardiaLeft = getComputedStyle(guardia).left;
+    let guardiaTop = Number(currentGuardiaTop.substring(0, currentGuardiaTop.length - 2));
+    let guardiaLeft = Number(currentGuardiaLeft.substring(0, currentGuardiaLeft.length - 2));
+
+    let currentLadroTop = getComputedStyle(ladro).top;
+    let currentLadroLeft = getComputedStyle(ladro).left;
+    let ladroTop = Number(currentLadroTop.substring(0, currentLadroTop.length - 2));
+    let ladroLeft = Number(currentLadroLeft.substring(0, currentLadroLeft.length - 2));
+
+
+    if (ladroTop == guardiaTop && ladroLeft == guardiaLeft) {
+        console.log("beccato");
+        btnNord.disabled = true;
+        btnSud.disabled = true;
+        btnEst.disabled = true;
+        btnOvest.disabled = true;
+        esito.innerHTML = "Catturato";
+    } else {
+
+    }
+    
+    console.log(contatore)
+}
+
